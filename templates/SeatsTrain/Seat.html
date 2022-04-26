@@ -1,0 +1,74 @@
+{% extends 'basic/nav.html' %}
+{% block content %}
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+
+        <style>
+            div.w{
+                font-size: 20px;
+                color: #a06902;
+                display:inline-block;
+                margin: 33px;
+                text-align:left;
+                width:400px;
+                height: 800px;
+                background-color: rgba(0,0,0,0.5);
+                border: 3px solid #C1A2A2;
+                border-radius: 7px;
+            }
+            button.A{
+                width: 170px;
+                height: 50px;
+                padding: 7px;
+                margin: 2px;
+                border: 1px solid white;
+                background-color: #ffffcc;
+
+            }
+            button.A:hover{
+                background-color: #b89393;
+                color :white;
+            }
+            div.w:hover{
+                Box-shadow:
+                        -7px 4px 7px 2px #e3e2e2,
+                        8px 4px 7px 2px #a3a3a3,
+                        2px 2px 2px 5px #f6f2f2;
+            }
+            .sen{
+                color: #fdfdfd;
+                font-weight: bold;
+            }
+            p{
+                font-size: 25px;
+                font-weight: bold;
+            }
+        </style>
+    </head>
+    <body>
+    {%for x in SSSeat %}
+            <div class="w">
+                {% load static %}
+
+                <img src="{% static "images/seat.jpg"%}"  alt="inddddd" style="width:400px">
+                <div>
+                    <p><strong class="sen">Train Number:</strong>{{x.train_number}}</p>
+                    <p><strong class="sen">Trip Number:</strong>{{x.trip_number}}</p>
+                    <p><strong class="sen">NumberSeat:</strong>{{x.NumberSeat}}</p>
+                    <p><strong class="sen">Price:</strong>{{x.price}}</p>
+                    <p><strong class="sen">Date:</strong>{{x.SS_date}}</p>
+                    <p><strong class="sen">Time:</strong>{{x.SS_time}}</p>
+                    <p><strong class="sen">source:</strong>{{x.SS_source}}</p>
+                    <p><strong class="sen">destination:</strong>{{x.SS_destination}}</p>
+                    <p><a href="{% url "seatstrain:Update" x.id%}"><button class="A"> Book</button></a></p>
+
+                </div>
+            </div>
+
+    {% endfor %}
+    </body>
+    </html>
+{% endblock content %}

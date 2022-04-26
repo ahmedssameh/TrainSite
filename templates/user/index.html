@@ -1,0 +1,129 @@
+{% load static %}
+{% load crispy_forms_tags %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="title" content="project">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="language" content="English">
+    <meta name="author" content="vinayak sharma">
+
+    <title>{{title}}</title>
+
+
+    <!-- bootstrap file -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- bootstrap file-->
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+    <!-- main css -->
+    <link rel="stylesheet" type="text/css" href="{% static "index.css" %}" />
+
+
+    <!-- message here -->
+
+    {% if messages %}
+        {% for message in messages %}
+
+            <script>
+                alert("{{ message }}");
+            </script>
+
+        {% endfor %}
+    {% endif %}
+
+    <!--_______________________________________________-->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        function getcontent() {
+            var obj = new XMLHttpRequest();
+            obj.onreadystatechange = function() {
+                //4 means finished, 200 means ok
+                if (obj.readyState == 4 && obj.status == 200) {
+                    document.getElementById("LearnMore").innerHTML = obj.responseText;
+                }
+            };
+            obj.open("GET", "http://127.0.0.1:8000/home/info", true);
+            obj.send();
+        }</script>
+
+</head>
+{% load static %}
+<body class="container-fluid">
+<!--<script type="text/javascript" src="../JS/index.js"></script>-->
+
+
+<header class="row">
+
+    <!-- navbar-->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <link rel="stylesheet" href="{% static 'CSS/nav.css'%}">
+                {% load static %} <img src="{% static "images/2.jpg"%}" class="image">
+                <button class="navbar-toggle" data-toggle="collapse" data-target="#mainNavBar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <a class="navbar-brand" class="styleheader" href="{% url "index" %}"> Wassalny</a>
+            <div class="collapse navbar-collapse" id="mainNavBar">
+                <ul class="nav navbar-nav navbar-right">
+
+                    {% if user.is_authenticated %}
+                        <li><a href="http://127.0.0.1:8000/train/trains">Trains</a></li>
+                        <li><a href="http://127.0.0.1:8000/seatstrain/seats">Trips</a></li>
+                        <li><a href="{% url "logout" %}"><span class="glyphicon glyphicon-log-out"></span> &nbsp; Logout</a></li>
+                        <li><a href="{% url "Update"%}"><span class="glyphicon glyphicon-log-out"></span> &nbsp; Update</a></li>
+                    {% else %}
+                        <li><a href="{% url "register" %}"><span class="glyphicon glyphicon-user"></span> &nbsp; Sign up</a></li>
+                        <li><a href="{% url "login" %}"><span class="glyphicon glyphicon-log-in"></span> &nbsp; Log in</a></li>
+
+                    {% endif %}
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+<br/>
+<br>
+<br>
+<div class="row">
+    {% block start %}
+        {% if user.is_authenticated %}
+            <div style="border: 3px solid black; background-color: rgba(0,0,0,0.7);">
+            <h1 style=" text-align: center; color: #ffffcc; font-size: 40px; font-weight: bold; font-family: 'Ink Free' " >Welcome In Wassalny Site </h1>
+            <h3 style="text-align: center; color: #ffffcc; font-size: 40px; font-weight: bold; font-family: 'Ink Free'">Where you can book your railway trip to anywhere in Egypt</h3>
+                <h5 style="text-align: center; color: #ffffcc; font-size: 40px; font-weight: bold; font-family: 'Ink Free';">
+                    What are you waiting For Make your Wallet and Book your Trip Now ;)</h5>
+            </div>
+
+        {% else %}
+            <h1 style="padding-top: 20%; text-align: center; color: #ffffcc; font-size: 40px; font-weight: bold; font-family: Courier " >Login To Get Benefits ;) </h1>
+            <div id="container">
+            {% load static %}
+                <button type = "button" id="but1" onclick="getcontent()" style="margin-top: 2%; margin-left: 45%; background-color: #ffffcc; font-size: 20px" >Learn More</button>
+            </div>
+            <div id="LearnMore">
+            </div>
+        {% endif %}
+    {% endblock %}
+</div>
+</body>
+
+</html>

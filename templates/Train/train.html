@@ -1,0 +1,45 @@
+{% extends 'basic/nav.html' %}
+
+{% block content %}
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <style>
+            div.w{
+                font-size: 35px;
+                font-weight: bold;
+                color: #ffffcc;
+                display:inline-block;
+                margin: 33px;
+                text-align:left;
+                width: 400px;
+                height: 600px;
+                background-color: rgba(0,0,0,0.5);
+                border: 3px solid #C1A2A2;
+                border-radius: 7px;
+            }
+        </style>
+    </head>
+    <body>
+
+
+    {% load static%}
+    {% for x in tra %}
+        <div class="w">
+            <p1>
+                <img style="width: 400px;height: 400px" src="{{ x.trainimg.url }}">
+                TrainModel: {{ x.model}}<br>
+                Source: {{ x.source }}<br>
+                Destination: {{ x.destination}}<br>
+                NumberOfSeats: {{ x.numberOfSeats}}<br>
+                <br>
+            </p1>
+            </div>
+        </div>
+
+    {% endfor %}
+    </body>
+    </html>
+{% endblock content %}

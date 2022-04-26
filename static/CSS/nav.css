@@ -1,0 +1,62 @@
+ul{
+    color: rgb(9, 9, 9);
+    list-style-type: none;
+    text-align: right;
+}
+li{
+    font-weight: bold;
+    color: rgb(7, 7, 7);
+    margin: 15px;
+    display:inline-block;
+    opacity: 1;
+}
+a:link,a:visited {
+    color: #f3bbbb;
+    font-weight: bold;
+    font-size: large;
+    text-decoration: none;
+}
+div.Trasperent{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 0;
+    padding-bottom: 0;
+
+}
+#site_name{
+    font-size:xx-large;
+    font-weight: bold;
+    padding-right: 350px;
+    font-style: italic;
+}
+.nav_Header {
+    position: relative;
+    background-color: #0e0e0e;
+    opacity: 0.8;
+}
+.image{
+    width: 70px;
+    height: 60px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-top: -6px;
+}
+div.Wrap{
+    max-width: 1140px;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+body{
+    background-image:url('../images/backkkk.png');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+.image1{
+    background-repeat: no-repeat;
+    background-size: cover;
+}

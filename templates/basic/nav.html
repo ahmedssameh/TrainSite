@@ -1,0 +1,24 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'CSS/nav.css'%}">
+<header class="nav_Header">
+<div class="Wrap Trasperent">
+    {% load static %} <img src="{% static "images/2.jpg"%}" class="image">
+    <a href="#" id="site_name">Wassalny</a>
+
+        <nav>
+            <Ul>
+            <Li><a href=" http://127.0.0.1:8000/">Home</a></Li>
+            <li><a href=" http://127.0.0.1:8000/train/trains">Trains</a></li>
+            <li><a href="http://127.0.0.1:8000/seatstrain/seats">Trips</a></li>
+                <li><a href="{% url "logout" %}"><span class="glyphicon glyphicon-log-out"></span> &nbsp; Logout</a></li>
+                <li><a href="{% url "Update"%}"><span class="glyphicon glyphicon-log-out"></span> &nbsp; Update</a></li>
+                <li><a href="http://127.0.0.1:8000/Wallet/info">Wallet</a></li>
+            </Ul>
+        </nav>
+
+
+</div>
+</header>
+{% block content %}
+
+{% endblock content %}
